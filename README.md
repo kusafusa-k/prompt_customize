@@ -14,4 +14,4 @@ bashのプロンプト変更
   
   https://qiita.com/jun68ykt/items/d95010ad7dae2f802474
   
-  https://qiita.com/jun68ykt/items/d95010ad7dae2f802474
+  https://qiita.com/onokatio/items/c2d710e2cb7ec61c8dca
