@@ -15,6 +15,7 @@ bashのプロンプト変更
   $ source prompt_customize.sh
   
 ・参考
+
   https://qiita.com/amidaku/items/841d62335a03792424d5
   
   https://qiita.com/ken1flan/items/7697b63214378424958a
