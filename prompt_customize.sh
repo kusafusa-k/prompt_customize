@@ -1,13 +1,13 @@
 # prompt_customize.sh
 
-PROMPT_DIR_COLOR='\033[0;36m'
+PROMPT_DIR_COLOR='\033[0;35m'
 PROMPT_BRANCH_COLOR='\033[0;35m'
 PROMPT_STATUS_OK_COLOR='\033[0;32m'
 PROMPT_STATUS_WARN_COLOR='\033[1;33m'
 PROMPT_STATUS_NG_COLOR='\033[0;31m'
 PROMPT_STATUS_BUG_COLOR='\033[1;36m'
 PROMPT_TURN_OFF_COLOR='\033[0m'
-PROMPT_DEFAULT_COLOR='\033[1;30m'
+PROMPT_DEFAULT_COLOR='\033[0;32m'
 
 PROMPT_STATUS_DEFAULT="${PROMPT_DEFAULT_COLOR}(๑˃̵ᴗ˂̵)ﻭ<${PROMPT_TURN_OFF_COLOR}"
 PROMPT_STATUS_COMMAND_NG="${PROMPT_STATUS_NG_COLOR}_(┐「ε:)_ｺﾃｯ${PROMPT_TURN_OFF_COLOR}"
@@ -15,6 +15,13 @@ PROMPT_STATUS_OK="${PROMPT_STATUS_OK_COLOR}٩(๑❛ᴗ❛๑)۶${PROMPT_TURN_OF
 PROMPT_STATUS_WARN="${PROMPT_STATUS_WARN_COLOR}(✿╹◡╹)ﾉ☆${PROMPT_TURN_OFF_COLOR}"
 PROMPT_STATUS_NG="${PROMPT_STATUS_NG_COLOR}(˘̩̩ε˘̩ƪ)${PROMPT_TURN_OFF_COLOR}"
 PROMPT_STATUS_BUG="${PROMPT_STATUS_BUG_COLOR}(」・ω・)」うー！(／・ω・)／にゃー！${PROMPT_TURN_OFF_COLOR}"
+
+# git-prompt.sh用の設定
+#PS1に$(__git_ps1)を含むように変更する
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWSTASHSTATE=1
 
 function prompt_preprocess () {
   local last_command_status=$?
@@ -56,11 +63,7 @@ function git_status_string () {
     git_status=$PROMPT_STATUS_BUG
     branch_color="$PROMPT_STATUS_BUG_COLOR"
   fi
-  echo "[$branch_color$(git_branch_name)${PROMPT_TURN_OFF_COLOR} $git_status]"
-}
-
-function git_branch_name () {
-  git rev-parse --abbrev-ref HEAD 2> /dev/null
+  echo "$branch_color$(__git_ps1)${PROMPT_TURN_OFF_COLOR} $git_status"
 }
 
 PROMPT_COMMAND="prompt_preprocess"

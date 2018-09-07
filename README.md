@@ -11,10 +11,11 @@ bashのプロンプト変更
 ・顔文字表示してみた
 
 ・使い方
-
+  $ source git-prompt.sh
   $ source prompt_customize.sh
   
 ・参考
+  https://qiita.com/varmil/items/9b0aeafa85975474e9b6
 
   https://qiita.com/amidaku/items/841d62335a03792424d5
   
